@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TechJobsPersistent.Data;
 
 namespace TechJobsPersistent
 {
@@ -26,7 +27,7 @@ namespace TechJobsPersistent
         {
             services.AddControllersWithViews();
 
-            services.AddDbContext<DbContext>(options =>
+            services.AddDbContext<JobDbContext>(options =>
             options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
         }
 
