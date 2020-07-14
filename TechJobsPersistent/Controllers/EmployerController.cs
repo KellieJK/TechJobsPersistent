@@ -14,8 +14,9 @@ namespace TechJobsPersistent.Controllers
 {
     public class EmployerController : Controller
     {
-        private DbContext context;
+        private JobDbContext context;
 
+        
         // GET: /<controller>/
         public IActionResult Index()
         {
@@ -29,7 +30,10 @@ namespace TechJobsPersistent.Controllers
 
         public IActionResult Add()
         {
-            return View();
+            Employer employer = new Employer();
+            return View(employer);
+
+            
         }
 
         public IActionResult ProcessAddEmployerForm()
