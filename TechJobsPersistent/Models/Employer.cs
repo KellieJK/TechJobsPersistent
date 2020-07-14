@@ -16,5 +16,10 @@ namespace TechJobsPersistent.Models
             Name = name;
             Location = location;
         }
+
+        internal static object Include(Func<object, object> p)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
