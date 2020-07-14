@@ -35,6 +35,17 @@ namespace TechJobsPersistent.Controllers
             return View();
         }
 
+        //this is where I added the AddJobViewModel instance-----------
+
+        public IActionResult AddJob(AddJobViewModel viewModel)
+        {
+            return View(viewModel);
+        }
+
+
+        //-------------------------------------------------------------
+
+
         public IActionResult ProcessAddJobForm()
         {
             return View();
