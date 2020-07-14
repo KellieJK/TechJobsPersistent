@@ -8,6 +8,8 @@ namespace TechJobsPersistent.ViewModels
 {
     public class AddEmployerViewModel
     {
+        internal int Id;
+
         [Required(ErrorMessage = "Name is required")]
         public string Name { get; set; }
         [Required(ErrorMessage = "Location is required")]
