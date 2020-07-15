@@ -8,18 +8,21 @@ using TechJobsPersistent.Models;
 
 namespace TechJobsPersistent.ViewModels
 {
-    public class SkillsList
+    public class AddJobViewModel
     {
         public string Name { get; set; }
         public int EmployerId { get; set; }
 
-        public List<int> SkillId { get; set; }
+        public List<int> SkillId { get; set; } = new List<int>();
 
-        public List<SelectListItem> Skills { get; set; }
+        public List<Skill> Skills { get; set; } = new List<Skill>();
 
-        public SkillsList(List<Skill> skills) { get; set; }
+        public List<SelectListItem> Employers { get; set; } = new List<SelectListItem>();
 
 
+
+
+        public List<Skill> skills = new List<Skill>();
 
     }
 }

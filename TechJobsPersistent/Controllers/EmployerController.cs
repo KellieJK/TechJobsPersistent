@@ -21,10 +21,8 @@ namespace TechJobsPersistent.Controllers
         public IActionResult Index()
         {
 
-
             List<Employer> employers = context.Employers.ToList();
             return View(employers);
-
 
         }
 
@@ -36,37 +34,6 @@ namespace TechJobsPersistent.Controllers
                 Location = addEmployerViewModel.Location
             };
             return View(employer);
-
-
-            //if (ModelState.IsValid)
-            //{
-
-
-            //    List<Employer> existingItems = context.Employer
-            //        .Where(js => js.AddEmployerViewModel.Name == AddEmployerViewModel.Name)
-            //        .Where(js => js.EmployerId == EmployerId)
-            //        .ToList();
-
-            //    if (existingItems.Count == 0)
-            //    {
-            //        Employer employer = new Employer
-            //        {
-            //            Name = Name,
-            //            Location = Location
-            //        };
-            //        context.Employer.Add(Name);
-            //        context.SaveChanges();
-            //    }
-
-            //    return Redirect("/Home/Detail/" + jobId);
-            //}
-
-            //return View(viewModel);
-
-
-
-
-
 
         }
 
@@ -88,20 +55,33 @@ namespace TechJobsPersistent.Controllers
 
 
 
-        public IActionResult About()
+
+
+
+/*
+        [HttpPost]
+        public IActionResult Add(AddEmployerViewModel addEmployerViewModel)
         {
 
+            if (ModelState.IsValid == false)
+                return View(addEmployerViewModel);
 
-            List<Employer> employer = context.Employers
-                .Include(j => j.Name)
-                .Include(j => j.Location)
-                .ToList();
+            context.Employers.Add(addEmployerViewModel.Employer);
+            context.SaveChanges();
+            return Redirect("Index");
+
+        }
+*/
+
+        public IActionResult About(int id)
+        {
+            Employer employer = context.Employers.SingleOrDefault(e => e.Id == id);
+
+            if (employer == null)
+                return Redirect("Index");
+
 
             return View(employer);
-
-
-
-
 
         }
     }
