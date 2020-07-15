@@ -36,22 +36,23 @@ namespace TechJobsPersistent.Controllers
             List<Employer> allEmployers = context.Employers.ToList();
             ViewBag.allEmployers = allEmployers;
 
+            List<Skill> JobSkills = context.Skills.ToList();
+            ViewBag.jobSkills = JobSkills;
+
             return View();
         }
 
-        //this is where I added the AddJobViewModel instance-----------
-
-        //-------------------------------------------------------------
+  
 
         [HttpPost("/Add")]
-        public IActionResult ProcessAddJobForm(AddJobViewModel addJobViewModel, string[] selectedSkills)
+        public IActionResult ProcessAddJobForm(SkillsList addJobViewModel, string[] selectedSkills)
         {
             if (ModelState.IsValid)
             {
                Job newJob = new Job(addJobViewModel.Name, addJobViewModel.EmployerId) 
                 {
                    Name = addJobViewModel.Name,
-                   EmployerId = addJobViewModel.EmployerId
+                   EmployerId = addJobViewModel.EmployerId,
                    JobSkills = new List<JobSkill>()
                 };
                 foreach (string skill in selectedSkills)
@@ -70,7 +71,6 @@ namespace TechJobsPersistent.Controllers
             }
             return View("Add", addJobViewModel);
         }
-
 
 
 

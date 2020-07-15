@@ -15,8 +15,7 @@ namespace TechJobsPersistent.Models
 
         public List<JobSkill> JobSkills { get; set; }
 
-        public string Location { get; set; }
-
+       
 
         public Job(string name, int employerId)
         {
