@@ -11,9 +11,6 @@ namespace TechJobsPersistent.Models
         public string Name { get; set; }
         public string Location { get; set; }
 
-        public Employer()
-        {
-        }
 
         public Employer(string name, string location)
         {

@@ -25,6 +25,7 @@ namespace TechJobsPersistent.Controllers
         public IActionResult Index()
         {
             List<Job> jobs = context.Jobs.Include(j => j.Employer).ToList();
+            
 
             return View(jobs);
         }
@@ -32,40 +33,36 @@ namespace TechJobsPersistent.Controllers
         [HttpGet("/Add")]
         public IActionResult AddJob()
         {
+            List<Employer> allEmployers = context.Employers.ToList();
+            ViewBag.allEmployers = allEmployers;
+
             return View();
         }
 
         //this is where I added the AddJobViewModel instance-----------
 
-        public IActionResult AddJob(AddJobViewModel viewModel)
-        {
-            AddJobViewModel inst1 = new AddJobViewModel();
-
-            return View(inst1);
-        }
-
-
         //-------------------------------------------------------------
 
-
+        [HttpPost("/Add")]
         public IActionResult ProcessAddJobForm(AddJobViewModel addJobViewModel, string[] selectedSkills)
         {
             if (ModelState.IsValid)
             {
-                Job newJob = new Job
+               Job newJob = new Job(addJobViewModel.Name, addJobViewModel.EmployerId) 
                 {
-                    Name = addJobViewModel.Name,
-                    EmployerId = int.Parse(addJobViewModel.EmployerId),
+                   Name = addJobViewModel.Name,
+                   EmployerId = addJobViewModel.EmployerId
+                   JobSkills = new List<JobSkill>()
                 };
-                int newJobId = int.Parse(addJobViewModel.EmployerId);
                 foreach (string skill in selectedSkills)
                 {
                     JobSkill newJobSkill = new JobSkill
                     {
-                        JobId = newJobId,
+                        JobId = newJob.Id,
                         SkillId = int.Parse(skill)
                     };
-                    context.JobSkills.Add(newJobSkill);
+                    newJob.JobSkills.Add(newJobSkill);
+                    context.Add(newJobSkill);
                 }
                 context.Jobs.Add(newJob);
                 context.SaveChanges();
@@ -84,7 +81,7 @@ namespace TechJobsPersistent.Controllers
                 .Include(j => j.Employer)
                 .Single(j => j.Id == id);
 
-            List<JobSkill> jobSkills = context.JobSkills
+            List<JobSkill> jobSkills = context.Employer
                 .Where(js => js.JobId == id)
                 .Include(js => js.Skill)
                 .ToList();

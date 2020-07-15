@@ -64,7 +64,7 @@ namespace TechJobsPersistent.Controllers
                 int jobId = viewModel.JobId;
                 int skillId = viewModel.SkillId;
 
-                List<JobSkill> existingItems = context.JobSkills
+                List<JobSkill> existingItems = context.Employer
                     .Where(js => js.JobId == jobId)
                     .Where(js => js.SkillId == skillId)
                     .ToList();
@@ -76,7 +76,7 @@ namespace TechJobsPersistent.Controllers
                         JobId = jobId,
                         SkillId = skillId
                     };
-                    context.JobSkills.Add(jobSkill);
+                    context.Employer.Add(jobSkill);
                     context.SaveChanges();
                 }
 
@@ -88,7 +88,7 @@ namespace TechJobsPersistent.Controllers
 
         public IActionResult About(int id)
         {
-            List<JobSkill> jobSkills = context.JobSkills
+            List<JobSkill> jobSkills = context.Employer
                 .Where(js => js.SkillId == id)
                 .Include(js => js.Job)
                 .Include(js => js.Skill)

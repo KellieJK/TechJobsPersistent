@@ -15,13 +15,14 @@ namespace TechJobsPersistent.Models
 
         public List<JobSkill> JobSkills { get; set; }
 
-        public Job()
-        {
-        }
+        public string Location { get; set; }
 
-        public Job(string name)
+
+        public Job(string name, int employerId)
         {
             Name = name;
+            EmployerId = employerId;
+         
         }
     }
 }

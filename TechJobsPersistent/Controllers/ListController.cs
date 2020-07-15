@@ -58,7 +58,7 @@ namespace TechJobsPersistent.Controllers
 
                 foreach (var job in jobs)
                 {
-                    List<JobSkill> jobSkills = context.JobSkills
+                    List<JobSkill> jobSkills = context.Employer
                         .Where(js => js.JobId == job.Id)
                         .Include(js => js.Skill)
                         .ToList();
@@ -80,7 +80,7 @@ namespace TechJobsPersistent.Controllers
 
                     foreach (Job job in jobs)
                     {
-                        List<JobSkill> jobSkills = context.JobSkills
+                        List<JobSkill> jobSkills = context.Employer
                         .Where(js => js.JobId == job.Id)
                         .Include(js => js.Skill)
                         .ToList();
@@ -91,7 +91,7 @@ namespace TechJobsPersistent.Controllers
                 }
                 else if (column == "skill")
                 {
-                    List<JobSkill> jobSkills = context.JobSkills
+                    List<JobSkill> jobSkills = context.Employer
                         .Where(j => j.Skill.Name == value)
                         .Include(j => j.Job)
                         .ToList();
@@ -102,7 +102,7 @@ namespace TechJobsPersistent.Controllers
                             .Include(j => j.Employer)
                             .Single(j => j.Id == job.JobId);
 
-                        List<JobSkill> displaySkills = context.JobSkills
+                        List<JobSkill> displaySkills = context.Employer
                             .Where(js => js.JobId == foundJob.Id)
                             .Include(js => js.Skill)
                             .ToList();
