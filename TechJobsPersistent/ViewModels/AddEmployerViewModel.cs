@@ -10,17 +10,27 @@ namespace TechJobsPersistent.ViewModels
     {
        
 
-        [Required(ErrorMessage = "Name is required")]
+        [Required]
         public string Name { get; set; }
         
         public string Location { get; set; }
+
+        public Employer ToEmployer()
+        {
+            return new Employer(Name, Location);
+        }
+
          public AddEmployerViewModel(string name, string location)
          {
             Name = name;
             Location = location;
          }
 
-    }
 
-  
+        public AddEmployerViewModel()
+        { 
+
+        }
+    }
+ 
 }
