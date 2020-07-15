@@ -2,7 +2,6 @@
 
 <h1>Add a Job</h1>
 
-
 <form method="post">
     <div class="form-group">
         <label asp-for="Name">Name</label>
@@ -14,10 +13,9 @@
         <label asp-for="EmployerId">Employer</label>
         <select asp-for="EmployerId" asp-items="Model.Employers" >
             <option>--Select--</option>
-            </select>
+        </select>
         <span asp-validation-for="EmployerId"></span>
         <a asp-controller="Employer" asp-action="Add">AddEmployer</a>
-
      </div>
 
     <div class="form-group">
@@ -25,40 +23,17 @@
         {
         <div class="form-group">
             <input type="checkbox" name="selectedSkills" value="@skill.Id" />
-        
-    </div>
+            <label>@skill.Name</label>
+        </div>
 
         }
-
         <a asp-controller="Skill" asp-action="Add">Add Skill</a>
 
-</form>
-@*
-<form asp-controller="Home" asp-action="ProcessAddJobForm" method="post">
-    <div class="form-group">
-        <label>Employer</label>
-        <input class="form-control" asp-for="Employer" />
-        <span></span>
     </div>
 
-  
-
-    <div>
-
-        <label for="Employers">Add Employer</label>
-
-        <select name="Employer" id="Job" asp-for="EmployerId">
-            @foreach (Employer employer in ViewBag.allEmployers)
-            {
-            <option value="@employer.Id">@employer.Name</option>
-            }
-        </select>
-
-
-    </div>
-
-
-        <input type="submit" value="Add Job" />
+        
+    <input type="submit" value="Add Job" />
 </form>
 
-*@
+
+
