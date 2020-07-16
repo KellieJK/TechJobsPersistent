@@ -30,6 +30,8 @@ namespace TechJobsPersistent.ViewModels
         }
 
 
+
+
         public AddJobViewModel()
         {
 
