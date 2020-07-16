@@ -11,6 +11,7 @@ namespace TechJobsPersistent.Data
 
         public DbSet<JobSkill> JobSkills { get; set; }
 
+
         public DbSet<JobSkill> Employer { get; set; }
         //public object JobSkills { get; set; }
 

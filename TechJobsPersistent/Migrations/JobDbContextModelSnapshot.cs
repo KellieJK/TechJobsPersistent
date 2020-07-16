@@ -64,7 +64,7 @@ namespace TechJobsPersistent.Migrations
 
                     b.HasIndex("SkillId");
 
-                    b.ToTable("JobSkills");
+                    b.ToTable("JobSkill");
                 });
 
             modelBuilder.Entity("TechJobsPersistent.Models.Skill", b =>
