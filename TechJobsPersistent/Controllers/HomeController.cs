@@ -68,10 +68,6 @@ namespace TechJobsPersistent.Controllers
                 }
         */
 
-
-
-   
-
         public IActionResult ProcessAddJobForm(AddJobViewModel addJobViewModel, string[] selectedSkills)
                 {
                     if (ModelState.IsValid)
@@ -103,11 +99,6 @@ namespace TechJobsPersistent.Controllers
                     return View("Add", addJobViewModel);
                 }
        
-
-
-
-
-
         /*
                 [HttpPost]
                 public IActionResult ProcessAddJobForm(AddJobViewModel addJobViewModel, string[] selectedSkills)
@@ -125,8 +116,6 @@ namespace TechJobsPersistent.Controllers
                     }
                 }
         */
-
-
 
         public IActionResult Detail(int id)
         {

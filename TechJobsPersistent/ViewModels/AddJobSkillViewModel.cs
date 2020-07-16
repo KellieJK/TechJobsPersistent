@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using TechJobsPersistent.Models;
+using TechJobsPersistent.ViewModels;
+using TechJobsPersistent.Data;
+using TechJobsPersistent.Controllers;
+
 
 namespace TechJobsPersistent.ViewModels
 {

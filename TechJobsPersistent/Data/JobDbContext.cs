@@ -8,12 +8,15 @@ namespace TechJobsPersistent.Data
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Employer> Employers { get; set; }
         public DbSet<Skill> Skills { get; set; }
-        public DbSet<JobSkill> Employer { get; set; }
-        public object JobSkills { get; internal set; }
 
-        public JobDbContext(DbContextOptions<JobDbContext> options)
-            : base(options)
+        public DbSet<JobSkill> JobSkills { get; set; }
+
+        public DbSet<JobSkill> Employer { get; set; }
+        //public object JobSkills { get; set; }
+
+        public JobDbContext(DbContextOptions<JobDbContext> options) : base(options)
         {
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
