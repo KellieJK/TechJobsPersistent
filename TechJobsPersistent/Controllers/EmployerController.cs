@@ -26,7 +26,7 @@ namespace TechJobsPersistent.Controllers
         public IActionResult Index()
         {
             List<Employer> employers = context.Employers.ToList();
-            return View(context.Employers.ToList());
+            return View(employers);
         }
 
         public IActionResult Add()
@@ -37,53 +37,61 @@ namespace TechJobsPersistent.Controllers
                 Location = addEmployerViewModel.Location
             };*/
 
-            return View(new AddEmployerViewModel());
+            AddEmployerViewModel addEmployerViewModel = new AddEmployerViewModel();
+
+            return View(addEmployerViewModel);
 
         }
 
-        /*
 
-                [HttpPost]
-                public IActionResult ProcessAddEmployerForm(Employer employer)
+/*
+        public IActionResult ProcessAddEmployerForm(AddEmployerViewModel addEmployerViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                Employer newEmployer = new Employer
                 {
-                    if(ModelState.IsValid)
-                    {
-                        context.Employers.Add(employer);
-                            context.SaveChanges();
-                        return Redirect("/Employer");
+                    Name = addEmployerViewModel.Name,
+                    Location = addEmployerViewModel.Location
+                };
 
-                    }
+                context.Employers.Add(newEmployer);
+                context.SaveChanges();
+                return Redirect("/Employer");
 
-                    return View("Add", employer);
+            }
+            return View("Add", addEmployerViewModel);
+        }
+*/
 
-                }
-        */
 
-
-
-      
-           [HttpPost]
-           public IActionResult ProcessAddEmployerForm(AddEmployerViewModel addEmployerViewModel)
+  [HttpPost]
+       public IActionResult ProcessAddEmployerForm(AddEmployerViewModel addEmployerViewModel)
            {
 
-               if (ModelState.IsValid == true)
+        if (ModelState.IsValid == true)
                   // return View(addEmployerViewModel);
 
-               context.Employers.Add(addEmployerViewModel.ToEmployer());
-               context.SaveChanges();
-               return Redirect("Index");
+        context.Employers.Add(addEmployerViewModel.ToEmployer());
+         context.SaveChanges();
+          return Redirect("/Employer");
+         
+         }
 
-           }
+
+
+
 
 
         public IActionResult About(int id)
         {
-            Employer employer = context.Employers.SingleOrDefault(e => e.Id == id);
+            /*Employer employer = context.Employers.SingleOrDefault(e => e.Id == id);
 
             if (employer == null)
                 return Redirect("Index");
             else
-
+*/
+            Employer employer = context.Employers.Find(id);
                  return View(employer);
         }
         
