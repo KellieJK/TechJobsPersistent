@@ -16,6 +16,7 @@ namespace TechJobsPersistent.Models
 
         public Skill()
         {
+
         }
     }
 }

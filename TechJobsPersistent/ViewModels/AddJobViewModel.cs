@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
+using TechJobsPersistent.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using TechJobsPersistent.Models;
 
 namespace TechJobsPersistent.ViewModels
@@ -12,14 +11,12 @@ namespace TechJobsPersistent.ViewModels
     {
         public string Name { get; set; }
         public int EmployerId { get; set; }
-
+        public List<SelectListItem> Employers { get; set; }
         public List<int> SkillId { get; set; } 
 
         public List<Skill> Skills { get; set; } 
 
-        public List<SelectListItem> Employers { get; set; } 
-
-        public Job ToJob() => new Job(Name, EmployerId);
+      public Job ToJob() => new Job(Name);
 
         public AddJobViewModel(List<Employer> employers, List<Skill>skills)
         {
@@ -34,8 +31,7 @@ namespace TechJobsPersistent.ViewModels
 
                 Skills = skills;
 
-            }      
-                    
+            }              
                     
                 /*    (employer.Name, employer.Id.ToString()));
             foreach (Skill skill in skills)

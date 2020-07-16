@@ -27,5 +27,11 @@ namespace TechJobsPersistent.Models
         {
             throw new NotImplementedException();
         }
+
+        public Employer()
+        {
+
+        }
+
     }
 }
